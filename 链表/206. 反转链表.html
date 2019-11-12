@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://leetcode-cn.com/problems/reverse-linked-list/">206. 反转链表</a>
+
+    <script>
+        function ListNode(val, next) {
+            this.val = val;
+            this.next = next;
+        }
+
+        function printNodeList(head) {
+            let current = head
+            let result = ""
+            while (current != null) {
+                result += current.val
+                result += "-"
+                current = current.next
+            }
+            console.log(result)
+        }
+
+        /// 递归
+        function reverseList(head) {
+            if (head == null || head.next == null) {
+                return head
+            }
+
+            let newNode = reverseList(head.next)
+            head.next.next = head
+            head.next = null
+            return newNode
+        };
+
+
+        /// 遍历
+        function reverseList1(head) {
+            if (head == null || head.next == null) {
+                return head
+            }
+
+            let ipNode = head
+            let next = ipNode.next
+            let pre = null
+            while (ipNode) {
+                ipNode.next = pre
+
+                pre = ipNode
+                ipNode = next
+                if (ipNode) {
+                    next = ipNode.next
+                }
+            }
+            return pre
+        };
+
+        let node3 = new ListNode(3, null)
+        let node2 = new ListNode(2, node3)
+        let node1 = new ListNode(1, node2)
+        let head = new ListNode(0, node1)
+        printNodeList(head)
+        let newHead = reverseList1(head)
+        printNodeList(newHead)
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/">237. 删除链表中的节点></a>
+
+    <script>
+        function ListNode(val, next) {
+            this.val = val;
+            this.next = next;
+        }
+
+        function printNodeList(head) {
+            let current = head
+            let result = ""
+            while (current != null) {
+                result += current.val
+                result += "-"
+                current = current.next
+            }
+            console.log(result);
+        }
+
+        function deleteNode(node) {
+            node.val = node.next.val
+            node.next = node.next.next
+        };
+
+        let node3 = new ListNode(3, null)
+        let node2 = new ListNode(2, node3)
+        let node1 = new ListNode(1, node2)
+        let head = new ListNode(0, node1)
+        printNodeList(head)
+        deleteNode(node2)
+        printNodeList(head)
+
+    </script>
+
+</body>
+
+</html>
