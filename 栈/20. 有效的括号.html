@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <a href="https://leetcode-cn.com/problems/valid-parentheses/">20. 有效的括号></a>
+    <script>
+        function isValid(s) {
+            let right = [];
+            for (let i = 0; i < s.length; i++) {
+                if (s[i] == '(') {
+                    right.push(')');
+                } else if (s[i] == '[') {
+                    right.push(']');
+                } else if (s[i] == '{') {
+                    right.push('}');
+                } else if (right.pop() != s[i]) {
+                    return false;
+                }
+            }
+            return !right.length;
+
+        }
+
+        console.log(isValid("()[]{"))
+
+    </script>
+
+</body>
+
+</html>

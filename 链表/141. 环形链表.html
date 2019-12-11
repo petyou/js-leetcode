@@ -30,18 +30,21 @@
 
         var hasCycle = function (head) {
             if (head == null || head.next == null || head.next.next == null) {
-               return false 
+                return false
             }
 
             let fast = head
             let slow = head.next.next
 
-            while(fast && slow) {
+            while (fast && slow) {
                 if (fast == slow) {
                     return true
                 }
                 fast = fast.next
-                slow = slow.next.next
+                slow = slow.next
+                if (slow) {
+                    slow = slow.next
+                }
             }
             return false
         };
@@ -54,8 +57,8 @@
         // node3.next = head
 
         console.log(hasCycle(head));
-        
-       
+
+
 
     </script>
 
